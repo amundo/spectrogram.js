@@ -2,15 +2,17 @@
 <html>
     <head>
         <script src="spectrogram.js"></script>
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                var spectrogram = new Spectrogram("viewport");
-                navigator.getUserMedia({audio: true}, spectrogram.gotStream, function() { console.log("error"); });
-            })
-        </script>
+
     </head>
     <body>
-        <canvas id="viewport" height="512" width="700" />
+<canvas id="viewport" height="512" width="700" />
+<script>
+var spectrogram = new Spectrogram("viewport");
+navigator.mediaDevices
+    .getUserMedia({audio: true})
+    .then(stream => spectrogram.gotStream(stream))
+    .catch(error => console.log(error) )
+</script>
     </body>
 </html>
 
